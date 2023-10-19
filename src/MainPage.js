@@ -55,7 +55,7 @@ const MainPage = () => {
       container
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      sx={{ height: '100vh', overflow: 'hidden', padding: '20vh 0' }}
+      sx={{ height: { xs: '80vh', sm: '100vh' }, overflow: 'hidden' }}
       alignItems='center'
     >
       <Grid
