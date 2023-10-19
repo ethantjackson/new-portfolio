@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import './Projects.css';
 import GregImg from './img/greg.png';
 import WorkoutBuilderImg from './img/workout_builder.png';
@@ -41,7 +41,7 @@ function Projects() {
       <Navbar />
       <Grid container spacing={5} pb={3}>
         {projects.map(({ img, title, skills, bullets }) => (
-          <>
+          <Fragment key={title}>
             <Grid
               item
               xs={12}
@@ -86,7 +86,7 @@ function Projects() {
               </Typography>
               <ul>
                 {bullets.map((bullet) => (
-                  <li>
+                  <li key={bullet}>
                     <Typography variant='body2' mb={1}>
                       {bullet.startsWith('%link%') ? (
                         <a
@@ -105,7 +105,7 @@ function Projects() {
                 ))}
               </ul>
             </Grid>
-          </>
+          </Fragment>
         ))}
       </Grid>
     </Container>

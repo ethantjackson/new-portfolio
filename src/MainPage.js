@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Box, Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import TypeWriter from './TypeWriter';
 import './MainPage.css';

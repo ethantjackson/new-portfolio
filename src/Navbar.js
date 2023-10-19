@@ -1,5 +1,5 @@
 import { Box } from '@mui/material';
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from '@mui/material';
 import styled from '@emotion/styled';
 
@@ -43,7 +43,7 @@ function Navbar() {
       <NavLink href={navItems[0].to}>{navItems[0].name}</NavLink>
       {navItems.slice(1).map((navItem) => {
         return (
-          <>
+          <Fragment key={navItem.to}>
             <hr
               style={{
                 width: window.innerWidth > 425 ? '3rem' : '1.5rem',
@@ -58,7 +58,7 @@ function Navbar() {
             >
               {navItem.name}
             </NavLink>
-          </>
+          </Fragment>
         );
       })}
     </Box>

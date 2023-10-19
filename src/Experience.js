@@ -1,5 +1,5 @@
 import { Box, Container, Grid, Typography } from '@mui/material';
-import React, { useEffect, useRef } from 'react';
+import React, { Fragment, useEffect, useRef } from 'react';
 import './Projects.css';
 import Navbar from './Navbar';
 import './Experience.css';
@@ -39,7 +39,7 @@ function Experience() {
       <Navbar />
       <Grid container spacing={5} pb={3}>
         {experiences.map(({ img, title, position, duration, bullets }) => (
-          <>
+          <Fragment key={duration}>
             <Grid
               item
               xs={12}
@@ -99,7 +99,7 @@ function Experience() {
               </Box>
               <ul>
                 {bullets.map((bullet) => (
-                  <li>
+                  <li key={bullet}>
                     <Typography variant='body2' mb={1}>
                       {bullet.startsWith('%link%') ? (
                         <a
@@ -118,7 +118,7 @@ function Experience() {
                 ))}
               </ul>
             </Grid>
-          </>
+          </Fragment>
         ))}
       </Grid>
     </Container>
