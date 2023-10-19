@@ -26,7 +26,9 @@ function Experience() {
 
   useEffect(() => {
     document.addEventListener('scroll', handleScroll);
-    handleScroll();
+    setTimeout(() => {
+      handleScroll();
+    }, 100);
     fadeInDivs.current = document.querySelectorAll('.fade-in');
 
     return () => {
