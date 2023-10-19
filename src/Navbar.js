@@ -42,7 +42,6 @@ function Navbar() {
     >
       <NavLink href={navItems[0].to}>{navItems[0].name}</NavLink>
       {navItems.slice(1).map((navItem) => {
-        console.log(navItem.to);
         return (
           <>
             <hr
