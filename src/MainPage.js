@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Grid } from '@mui/material';
 import { Link } from 'react-router-dom';
 import TypeWriter from './TypeWriter';
@@ -53,6 +53,12 @@ const MainPage = () => {
     'Welcome to my website!',
     'Rotate the cube to find out more about me...',
   ];
+  useEffect(() => {
+    document.body.classList.add('no-scroll');
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, []);
 
   return (
     <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>

@@ -15,3 +15,7 @@
   content: '|';
   animation: blink 1s infinite;
 }
+
+body.no-scroll {
+  overflow: hidden;
+}
