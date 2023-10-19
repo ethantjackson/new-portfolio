@@ -16,7 +16,8 @@ const AboutMe = () => {
             className='my-picture'
             sx={{
               borderRadius: '100%',
-              maxWidth: 'calc(min(90%, 400px))',
+              width: 'calc(min(90vw, 400px))',
+              height: 'calc(min(90vw, 400px))',
               aspectRatio: '1/1',
               objectFit: 'cover',
             }}
