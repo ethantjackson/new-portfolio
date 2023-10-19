@@ -23,8 +23,10 @@ const MainPage = () => {
       }
     }, 100);
     setIsDragging(true);
-    setStartX(event.clientX);
-    setStartY(event.clientY);
+    const clientX = event.clientX || event.touches[0].clientX;
+    const clientY = event.clientY || event.touches[0].clientY;
+    setStartX(clientX);
+    setStartY(clientY);
   };
 
   const handleMouseUp = () => {
@@ -35,14 +37,16 @@ const MainPage = () => {
 
   const handleMouseMove = (event) => {
     if (!isDragging) return;
+    const clientX = event.clientX || event.touches[0].clientX;
+    const clientY = event.clientY || event.touches[0].clientY;
 
-    const deltaX = event.clientX - startX;
-    const deltaY = event.clientY - startY;
+    const deltaX = clientX - startX;
+    const deltaY = clientY - startY;
 
     setRotateX(rotateX - deltaY * rotationValue);
     setRotateY(rotateY + deltaX * rotationValue);
-    setStartX(event.clientX);
-    setStartY(event.clientY);
+    setStartX(clientX);
+    setStartY(clientY);
   };
   const Name = [
     `Hi, I'm Ethan Jackson :)`,
@@ -51,93 +55,95 @@ const MainPage = () => {
   ];
 
   return (
-    <Grid
-      container
-      onMouseUp={handleMouseUp}
-      onTouchEnd={handleMouseUp}
-      onMouseMove={handleMouseMove}
-      onTouchMove={handleMouseMove}
-      sx={{ height: { xs: '80vh', sm: '100vh' }, overflow: 'hidden' }}
-      alignItems='center'
-    >
+    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
       <Grid
-        item
-        xs={12}
-        md={6}
-        sx={{
-          textAlign: { xs: 'center', md: 'left' },
-          // textAlign: 'left',
-          paddingLeft: { xs: '0', md: '10%', lg: '20%' },
-        }}
+        container
+        onMouseUp={handleMouseUp}
+        onTouchEnd={handleMouseUp}
+        onMouseMove={handleMouseMove}
+        onTouchMove={handleMouseMove}
+        sx={{ height: { xs: '80vh', sm: '100vh' }, overflow: 'hidden' }}
+        alignItems='center'
       >
-        <h2>
-          <TypeWriter content={Name} speed={25} />
-        </h2>
-      </Grid>
-      <Grid
-        item
-        xs={12}
-        md={6}
-        onMouseDown={handleMouseDown}
-        onTouchStart={handleMouseDown}
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
-        <div className='cube-container'>
-          <div
-            className='cube'
-            ref={cubeRef}
-            style={{
-              transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-            }}
-          >
-            <Link
-              to='/experience'
-              className='cube-face front'
-              draggable={false}
-              style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+        <Grid
+          item
+          xs={12}
+          md={6}
+          sx={{
+            textAlign: { xs: 'center', md: 'left' },
+            // textAlign: 'left',
+            paddingLeft: { xs: '0', md: '10%', lg: '20%' },
+          }}
+        >
+          <h2>
+            <TypeWriter content={Name} speed={25} />
+          </h2>
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={6}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleMouseDown}
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+          }}
+        >
+          <div className='cube-container'>
+            <div
+              className='cube'
+              ref={cubeRef}
+              style={{
+                transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+              }}
             >
-              Experience
-            </Link>
-            <Link
-              to='/about-me'
-              className='cube-face back'
-              draggable={false}
-              style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
-            >
-              About Me
-            </Link>
-            <Link
-              to='/projects'
-              className='cube-face left'
-              draggable={false}
-              style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
-            >
-              Projects
-            </Link>
-            <Link
-              to='/resume'
-              className='cube-face right'
-              draggable={false}
-              style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
-            >
-              Resume
-            </Link>
-            <Link
-              to='/contact-me'
-              className='cube-face top'
-              draggable={false}
-              style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
-            >
-              Contact Me
-            </Link>
-            <div className='cube-face bottom'></div>
+              <Link
+                to='/experience'
+                className='cube-face front'
+                draggable={false}
+                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+              >
+                Experience
+              </Link>
+              <Link
+                to='/about-me'
+                className='cube-face back'
+                draggable={false}
+                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+              >
+                About Me
+              </Link>
+              <Link
+                to='/projects'
+                className='cube-face left'
+                draggable={false}
+                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+              >
+                Projects
+              </Link>
+              <Link
+                to='/resume'
+                className='cube-face right'
+                draggable={false}
+                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+              >
+                Resume
+              </Link>
+              <Link
+                to='/contact-me'
+                className='cube-face top'
+                draggable={false}
+                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+              >
+                Contact Me
+              </Link>
+              <div className='cube-face bottom'></div>
+            </div>
           </div>
-        </div>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 };
 
