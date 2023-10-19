@@ -54,7 +54,9 @@ const MainPage = () => {
     <Grid
       container
       onMouseUp={handleMouseUp}
+      onTouchEnd={handleMouseUp}
       onMouseMove={handleMouseMove}
+      onTouchMove={handleMouseMove}
       sx={{ height: { xs: '80vh', sm: '100vh' }, overflow: 'hidden' }}
       alignItems='center'
     >
@@ -77,6 +79,7 @@ const MainPage = () => {
         xs={12}
         md={6}
         onMouseDown={handleMouseDown}
+        onTouchStart={handleMouseDown}
         sx={{
           display: 'flex',
           justifyContent: 'center',
