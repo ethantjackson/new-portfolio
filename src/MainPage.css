@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
 @media (max-width: 425px) {
   :root {
     --cube-width: 200px;

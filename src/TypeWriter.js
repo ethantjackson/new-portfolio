@@ -41,7 +41,8 @@ const TypeWriter = ({ content = '', speed = 100 }) => {
 
     // Clear the interval when component unmounts or before starting a new interval
     return () => clearInterval(animKey);
-  }, [content, speed]);
+    /* eslint-disable react-hooks/exhaustive-deps */
+  }, []);
 
   return (
     <Box sx={{ fontSize: { xs: '1.2rem', sm: '1.6rem', lg: '2rem' } }}>

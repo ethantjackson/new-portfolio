@@ -1,21 +1,26 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import TypeWriter from './TypeWriter';
 import './MainPage.css';
 
 const MainPage = () => {
+  const initialX = 90;
+  const finalX = -35;
   const cubeRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
-  const [rotateX, setRotateX] = useState(-25);
+  const [rotateX, setRotateX] = useState(initialX);
   const [rotateY, setRotateY] = useState(45);
   const rotationValue = 0.5;
   const [linksDisabled, setLinksDisabled] = useState(false);
+  const intervalId = useRef(null);
   const stillDragging = useRef(true);
+  const [introAnimDone, setIntroAnimDone] = useState(false);
 
   const handleMouseDown = (event) => {
+    if (!introAnimDone) return;
     stillDragging.current = true;
     setTimeout(() => {
       if (stillDragging.current) {
@@ -30,13 +35,14 @@ const MainPage = () => {
   };
 
   const handleMouseUp = () => {
+    if (!introAnimDone) return;
     stillDragging.current = false;
     setLinksDisabled(false);
     setIsDragging(false);
   };
 
   const handleMouseMove = (event) => {
-    if (!isDragging) return;
+    if (!introAnimDone || !isDragging) return;
     const clientX = event.clientX || event.touches[0].clientX;
     const clientY = event.clientY || event.touches[0].clientY;
 
@@ -53,12 +59,39 @@ const MainPage = () => {
     'Welcome to my website!',
     'Rotate the cube to find out more about me...',
   ];
+
+  const animRate = 10;
+  const maxSpeed = 1;
+  const mid = (finalX - initialX) / 2 + initialX;
+  const coef = (initialX - (finalX - initialX) / 100 - mid) ** -2 * -maxSpeed;
   useEffect(() => {
+    const calcSpeed = (start, end, cur) => {
+      const speed = coef * (cur - mid) ** 2 + maxSpeed;
+      return speed;
+    };
     document.body.classList.add('no-scroll');
+    setTimeout(() => {
+      if (!intervalId.current) {
+        intervalId.current = setInterval(() => {
+          setRotateX(
+            (prevRot) => prevRot - calcSpeed(initialX, finalX, prevRot)
+          );
+        }, animRate);
+      }
+    }, 1000);
+
     return () => {
       document.body.classList.remove('no-scroll');
     };
-  }, []);
+  }, [finalX, coef, mid]);
+
+  useEffect(() => {
+    if (rotateX <= finalX) {
+      clearInterval(intervalId.current);
+      intervalId.current = null;
+      setIntroAnimDone(true);
+    }
+  }, [rotateX, finalX]);
 
   return (
     <div style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
@@ -108,7 +141,10 @@ const MainPage = () => {
                 to='/experience'
                 className='cube-face front'
                 draggable={false}
-                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+                style={{
+                  pointerEvents: linksDisabled ? 'none' : 'auto',
+                  userSelect: 'none',
+                }}
               >
                 Experience
               </Link>
@@ -116,7 +152,10 @@ const MainPage = () => {
                 to='/about-me'
                 className='cube-face back'
                 draggable={false}
-                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+                style={{
+                  pointerEvents: linksDisabled ? 'none' : 'auto',
+                  userSelect: 'none',
+                }}
               >
                 About Me
               </Link>
@@ -124,7 +163,10 @@ const MainPage = () => {
                 to='/projects'
                 className='cube-face left'
                 draggable={false}
-                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+                style={{
+                  pointerEvents: linksDisabled ? 'none' : 'auto',
+                  userSelect: 'none',
+                }}
               >
                 Projects
               </Link>
@@ -132,7 +174,10 @@ const MainPage = () => {
                 to='/resume'
                 className='cube-face right'
                 draggable={false}
-                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+                style={{
+                  pointerEvents: linksDisabled ? 'none' : 'auto',
+                  userSelect: 'none',
+                }}
               >
                 Resume
               </Link>
@@ -140,11 +185,38 @@ const MainPage = () => {
                 to='/contact-me'
                 className='cube-face top'
                 draggable={false}
-                style={{ pointerEvents: linksDisabled ? 'none' : 'auto' }}
+                style={{
+                  pointerEvents: linksDisabled ? 'none' : 'auto',
+                  userSelect: 'none',
+                }}
               >
                 Contact Me
               </Link>
-              <div className='cube-face bottom'></div>
+              <div className='cube-face bottom'>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '90%',
+                    height: '90%',
+                    backgroundColor: 'black',
+                  }}
+                >
+                  <Typography
+                    variant='h2'
+                    sx={{
+                      fontSize: '300%',
+                      fontWeight: 'bold',
+                      transform: 'rotate(-45deg)',
+                      fontFamily: 'Montserrat',
+                      userSelect: 'none',
+                    }}
+                  >
+                    EJ
+                  </Typography>
+                </Box>
+              </div>
             </div>
           </div>
         </Grid>
