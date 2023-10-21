@@ -46,7 +46,9 @@ const TypeWriter = ({ content = '', speed = 100 }) => {
 
   return (
     <Box sx={{ fontSize: { xs: '1.2rem', sm: '1.6rem', lg: '2rem' } }}>
-      <p className='type-writer'>{displayedContent}</p>
+      <p className='type-writer' style={{ color: 'var(--bottom-color)' }}>
+        {displayedContent}
+      </p>
     </Box>
   );
 };

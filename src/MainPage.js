@@ -144,6 +144,8 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
+                  backgroundImage: 'url(bluesplatter.png)',
+                  backgroundSize: '100% 200%',
                 }}
               >
                 Experience
@@ -155,6 +157,8 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
+                  backgroundImage: 'url(yellowsplatter.png)',
+                  backgroundSize: '250% 110%',
                 }}
               >
                 About Me
@@ -166,6 +170,8 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
+                  backgroundImage: 'url(redsplatter.png)',
+                  backgroundSize: '200% 110%',
                 }}
               >
                 Projects
@@ -177,6 +183,8 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
+                  backgroundImage: 'url(greensplatter.png)',
+                  backgroundSize: '100% 150%',
                 }}
               >
                 Resume
@@ -211,6 +219,7 @@ const MainPage = () => {
                       transform: 'rotate(-45deg)',
                       fontFamily: 'Montserrat',
                       userSelect: 'none',
+                      color: 'var(--bottom-color)',
                     }}
                   >
                     EJ

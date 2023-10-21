@@ -1,4 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
+:root {
+  /* --top-color: #e9edc9;
+  --right-color: #e9edc9;
+  --back-color: #e9edc9;
+  --left-color: #e9edc9;
+  --front-color: #e9edc9;
+  --bottom-color: #e9edc9; */
+  --top-color: #fff;
+  /* --right-color: #ccd5ae;
+  --back-color: #e9edc9;
+  --left-color: #faedcd;
+  --front-color: #d4a373; */
+  --right-color: #fff;
+  --back-color: #fff;
+  --left-color: #fff;
+  --front-color: #fff;
+  --bottom-color: #fff;
+}
 
 @media (max-width: 425px) {
   :root {
@@ -57,6 +75,14 @@ header .sub-heading {
   perspective: 1000px;
 }
 
+.cube-face {
+  border: 1px solid black;
+}
+
+.splatter {
+  -webkit-user-drag: 'none';
+}
+
 .cube-container .cube {
   width: var(--cube-width);
   height: var(--cube-width);
@@ -83,33 +109,31 @@ header .sub-heading {
   filter: none;
 }
 .cube-container .front {
-  background: #d63946;
+  background: var(--front-color);
   transform: translateZ(var(--translateZ));
 }
 
 .cube-container .back {
-  background: #06d6a0;
+  background: var(--back-color);
   transform: rotateY(180deg) translateZ(var(--translateZ));
 }
 
 .cube-container .left {
-  background: #023047;
-  color: #fff;
+  background: var(--left-color);
   transform: rotateY(-90deg) translateZ(var(--translateZ));
 }
 
 .cube-container .right {
-  background: #3d348b;
-  color: #fff;
+  background: var(--right-color);
   transform: rotateY(90deg) translateZ(var(--translateZ));
 }
 
 .cube-container .top {
-  background: #a8dadc;
+  background: var(--top-color);
   transform: rotateX(90deg) translateZ(var(--translateZ));
 }
 
 .cube-container .bottom {
-  background: #ffd166;
+  background: var(--bottom-color);
   transform: rotateX(-90deg) translateZ(var(--translateZ));
 }
