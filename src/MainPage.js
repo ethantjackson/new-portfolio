@@ -157,7 +157,7 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
-                  backgroundImage: 'url(yellowsplatter.png)',
+                  backgroundImage: 'url(greensplatter.png)',
                   backgroundSize: '250% 110%',
                 }}
               >
@@ -183,7 +183,7 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
-                  backgroundImage: 'url(greensplatter.png)',
+                  backgroundImage: 'url(yellowsplatter.png)',
                   backgroundSize: '100% 150%',
                 }}
               >
