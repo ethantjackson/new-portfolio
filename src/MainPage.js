@@ -148,7 +148,11 @@ const MainPage = () => {
                   backgroundSize: '100% 200%',
                 }}
               >
-                Experience
+                <span
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                >
+                  Experience
+                </span>
               </Link>
               <Link
                 to='/about-me'
@@ -161,7 +165,11 @@ const MainPage = () => {
                   backgroundSize: '250% 110%',
                 }}
               >
-                About Me
+                <span
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                >
+                  About Me
+                </span>
               </Link>
               <Link
                 to='/projects'
@@ -174,7 +182,11 @@ const MainPage = () => {
                   backgroundSize: '200% 110%',
                 }}
               >
-                Projects
+                <span
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                >
+                  Projects
+                </span>
               </Link>
               <Link
                 to='/resume'
@@ -198,7 +210,11 @@ const MainPage = () => {
                   userSelect: 'none',
                 }}
               >
-                Contact Me
+                <span
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                >
+                  Contact Me
+                </span>
               </Link>
               <div className='cube-face bottom'>
                 <Box
