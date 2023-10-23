@@ -149,7 +149,7 @@ const MainPage = () => {
                 }}
               >
                 <span
-                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '25%' }}
                 >
                   Experience
                 </span>
@@ -166,7 +166,7 @@ const MainPage = () => {
                 }}
               >
                 <span
-                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '25%' }}
                 >
                   About Me
                 </span>
@@ -183,7 +183,7 @@ const MainPage = () => {
                 }}
               >
                 <span
-                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '25%' }}
                 >
                   Projects
                 </span>
@@ -200,7 +200,7 @@ const MainPage = () => {
                 }}
               >
                 <span
-                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '25%' }}
                 >
                   Resume
                 </span>
