@@ -199,7 +199,11 @@ const MainPage = () => {
                   backgroundSize: '100% 150%',
                 }}
               >
-                Resume
+                <span
+                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
+                >
+                  Resume
+                </span>
               </Link>
               <Link
                 to='/contact-me'
@@ -208,13 +212,10 @@ const MainPage = () => {
                 style={{
                   pointerEvents: linksDisabled ? 'none' : 'auto',
                   userSelect: 'none',
+                  backgroundColor: '#f7f7f7',
                 }}
               >
-                <span
-                  style={{ backgroundColor: '#f7f7f7', borderRadius: '50%' }}
-                >
-                  Contact Me
-                </span>
+                Contact Me
               </Link>
               <div className='cube-face bottom'>
                 <Box
