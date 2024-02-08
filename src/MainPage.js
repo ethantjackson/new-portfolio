@@ -11,6 +11,8 @@ const MainPage = () => {
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [startY, setStartY] = useState(0);
+  const [beginX, setBeginX] = useState(0);
+  const [beginY, setBeginY] = useState(0);
   const [rotateX, setRotateX] = useState(initialX);
   const [rotateY, setRotateY] = useState(45);
   const rotationValue = 0.5;
@@ -22,19 +24,21 @@ const MainPage = () => {
   const handleMouseDown = (event) => {
     if (!introAnimDone) return;
     stillDragging.current = true;
-    setTimeout(() => {
-      if (stillDragging.current) {
-        setLinksDisabled(true);
-      }
-    }, 350);
+    // setTimeout(() => {
+    //   if (stillDragging.current) {
+    //     setLinksDisabled(true);
+    //   }
+    // }, 350);
     setIsDragging(true);
     const clientX = event.clientX || event.touches[0].clientX;
     const clientY = event.clientY || event.touches[0].clientY;
+    setBeginX(clientX);
+    setBeginY(clientY);
     setStartX(clientX);
     setStartY(clientY);
   };
 
-  const handleMouseUp = () => {
+  const handleMouseUp = (event) => {
     if (!introAnimDone) return;
     stillDragging.current = false;
     setLinksDisabled(false);
@@ -48,6 +52,15 @@ const MainPage = () => {
 
     const deltaX = clientX - startX;
     const deltaY = clientY - startY;
+
+    const totalDragX = clientX - beginX;
+    const totalDragY = clientY - beginY;
+    if (
+      !linksDisabled &&
+      (Math.abs(totalDragX) > 5 || Math.abs(totalDragY) > 5)
+    ) {
+      setLinksDisabled(true);
+    }
 
     setRotateX(rotateX - deltaY * rotationValue);
     setRotateY(rotateY + deltaX * rotationValue);
