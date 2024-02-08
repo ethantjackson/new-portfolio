@@ -26,7 +26,7 @@ const MainPage = () => {
       if (stillDragging.current) {
         setLinksDisabled(true);
       }
-    }, 100);
+    }, 500);
     setIsDragging(true);
     const clientX = event.clientX || event.touches[0].clientX;
     const clientY = event.clientY || event.touches[0].clientY;
